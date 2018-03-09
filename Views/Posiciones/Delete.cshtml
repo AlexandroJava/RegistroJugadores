@@ -1,0 +1,48 @@
+﻿@model RegistroJugadores.Models.Posicion
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Posicion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomPosicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoPosicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPosicion)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,42 @@
+﻿@model RegistroJugadores.Models.Posicion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Posicion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomPosicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoPosicion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaPosicion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaPosicion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PosicionID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<RegistroJugadores.Models.Jugador>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table-responsive">
+    <table class="table-bordered table-condensed table-hover table-striped table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Equipo.NomEquipo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nacionalidad.NomNacionalidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Posicion.NomPosicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NomJugador)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sexo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Foto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaJugador)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Equipo.NomEquipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nacionalidad.NomNacionalidad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Posicion.NomPosicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomJugador)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sexo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Foto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaJugador)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.JugadorID }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.JugadorID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.JugadorID })
+                </td>
+            </tr>
+        }
+
+    </table>
+ </div>

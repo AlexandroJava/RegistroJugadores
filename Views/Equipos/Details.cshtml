@@ -1,0 +1,42 @@
+﻿@model RegistroJugadores.Models.Equipo
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Equipo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NomEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NomEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstadoEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstadoEquipo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEquipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEquipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EquipoID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
