@@ -209,6 +209,7 @@
     <Compile Include="Models\Equipo.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Jugador.cs" />
+    <Compile Include="Models\JugadorXEquipo.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Nacionalidad.cs" />
     <Compile Include="Models\Posicion.cs" />
@@ -295,6 +296,7 @@
     <Content Include="Views\Jugadores\Details.cshtml" />
     <Content Include="Views\Jugadores\Edit.cshtml" />
     <Content Include="Views\Jugadores\Index.cshtml" />
+    <Content Include="Views\Jugadores\DetalleJugador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

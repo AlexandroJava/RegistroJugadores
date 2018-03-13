@@ -21,6 +21,26 @@ namespace RegistroJugadores.Controllers
             return View(jugadors.ToList());
         }
 
+        // GET: Entradas/DetalleJugador/5
+        public ActionResult DetalleJugador(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Jugador jugador = db.Jugadors.Find(id);
+            //Query para mostrar la tabla de comentarios en la pagina de DetalleEntrada
+            //var InfoJugador = db.Database.SqlQuery<Jugador>(@"Select EquipoID,EntradaID,NomEquipo,EstadoEquipo,FechaEquipo,
+                                                                    //From Equipos Where JugadorID = " + id).ToList();
+            if (jugador == null)
+            {
+                return HttpNotFound();
+            }
+            //ViewBag.comentarios = InfoJugador;
+            return View(jugador);
+        }
+
+        [Authorize(Roles = "Administrador")]
         // GET: Jugadores/Details/5
         public ActionResult Details(int? id)
         {
@@ -35,7 +55,7 @@ namespace RegistroJugadores.Controllers
             }
             return View(jugador);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Jugadores/Create
         public ActionResult Create()
         {
@@ -44,7 +64,7 @@ namespace RegistroJugadores.Controllers
             ViewBag.PosicionID = new SelectList(db.Posicions, "PosicionID", "NomPosicion");
             return View();
         }
-
+        [Authorize(Roles = "Administrador")]
         // POST: Jugadores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -64,7 +84,7 @@ namespace RegistroJugadores.Controllers
             ViewBag.PosicionID = new SelectList(db.Posicions, "PosicionID", "NomPosicion", jugador.PosicionID);
             return View(jugador);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Jugadores/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -82,7 +102,7 @@ namespace RegistroJugadores.Controllers
             ViewBag.PosicionID = new SelectList(db.Posicions, "PosicionID", "NomPosicion", jugador.PosicionID);
             return View(jugador);
         }
-
+        [Authorize(Roles = "Administrador")]
         // POST: Jugadores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -101,7 +121,7 @@ namespace RegistroJugadores.Controllers
             ViewBag.PosicionID = new SelectList(db.Posicions, "PosicionID", "NomPosicion", jugador.PosicionID);
             return View(jugador);
         }
-
+        [Authorize(Roles = "Administrador")]
         // GET: Jugadores/Delete/5
         public ActionResult Delete(int? id)
         {
@@ -116,7 +136,7 @@ namespace RegistroJugadores.Controllers
             }
             return View(jugador);
         }
-
+        [Authorize(Roles = "Administrador")]
         // POST: Jugadores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

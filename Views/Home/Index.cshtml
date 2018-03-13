@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<RegistroJugadores.Models.JugadorXEquipo>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,27 +7,50 @@
     <h1>Registro Jugadores de la Liga Mexicana de Futbol</h1>
     <p class="lead">Esta pagina esta enfocada en dar a conocer a ustedes los Jugadores de la Liga Mexicana de Futbol, sus nacionalidades y a los equipos que pertenecen.</p>
     <p><a href="http://localhost:55305/Home/About" class="btn btn-primary btn-lg">Ver más información &raquo;</a></p>
-    <p> <a href="http://localhost:55305/Home/Contact" class="btn btn-primary btn-lg">Contactanos &raquo;</a></p>
+    <p><a href="http://localhost:55305/Home/Contact" class="btn btn-primary btn-lg">Contactanos &raquo;</a></p>
 </div>
 
 <div class="row">
+    @{
+        var i = 1;
+        foreach (var entrada in Model)
+        {
+            if (i == 4)
+            {
+                @:</div>
+                @:<div class="row">
+            }
+            i += 1;
+            <div class="col-md-4">
+                <h2> @Html.ActionLink(entrada.NomJugador, "DetalleJugador", "Jugadores", new { id = entrada.JugadorID }, null)</h2>
+                @*@foreach (var item in Model)
+    {
+        <img src="~/Imagenes/@item.Foto" width="100">
+    }*@
+                <p>
+                    @entrada.NomEquipo
+                </p>
+                <p>
+                    @entrada.Edad Años
+                </p>
+                <p class="btn btn-default">@Html.ActionLink("Ver Detalle del Jugador", "DetalleJugador", "Jugadores", new { id = entrada.JugadorID }, null)</p>
+            </div>
+        }
+    }
+
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
+            <h2>EQUIPOS</h2>
+            <p>Aquí les mostramos los equipos que pertenecen a la primera división profesional de Futbol en la Liga Mexicana.</p>
+            <p><a class="btn btn-default" href="http://localhost:55305/Equipos">Ver Equipos &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>POSICIONES</h2>
+            <p>Son las posiciones existentes, con sus respectivos nombres y son las que se utilizan en las alineaciones de los partidos.</p>
+            <p><a class="btn btn-default" href="http://localhost:55305/Posiciones">Ver Posiciones &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>NACIONALIDADES</h2>
+            <p>Mostramos las diferentes nacionalidades existentes de cada jugador de la Liga Mexicana de Futbol</p>
+            <p><a class="btn btn-default" href="http://localhost:55305/Nacionalidades">Ver Nacionalidades &raquo;</a></p>
+        </div>
 </div>

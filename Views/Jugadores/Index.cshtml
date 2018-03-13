@@ -4,11 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Jugadores de la Liga de Futbol Mexicana</h2>
 
+@{
+    if (User.IsInRole("Administrador"))
+    {
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+        }
+    }
 <div class="table-responsive">
     <table class="table-bordered table-condensed table-hover table-striped table">
         <tr>
@@ -36,7 +41,14 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaJugador)
             </th>
-            <th></th>
+           @{
+               if (User.IsInRole("Administrador"))
+               {
+             <th>
+                Opciones
+            </th>
+                   }
+               }
         </tr>
 
         @foreach (var item in Model)
@@ -61,18 +73,28 @@
                     @Html.DisplayFor(modelItem => item.Edad)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Foto)
+                    <img src="~/Imagenes/@item.Foto" width="100">
+                    @*@Html.DisplayFor(modelItem => item.Foto)*@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaJugador)
                 </td>
+                @{
+                    if (User.IsInRole("Administrador"))
+                    {
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.JugadorID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.JugadorID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.JugadorID })
                 </td>
+                        }
+                    }
             </tr>
         }
 
     </table>
  </div>
+
+<p>
+    @Html.ActionLink("Regresar a la Pagina Principal", "Index", "Home")
+</p>

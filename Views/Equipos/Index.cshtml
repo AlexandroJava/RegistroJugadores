@@ -4,11 +4,16 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Equipos</h2>
 
+@{
+    if (User.IsInRole("Administrador"))
+    {
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+    }
+    }
 <div class="table-responsive">
     <table class="table-bordered table-condensed table-hover table-striped table">
         <tr>
@@ -21,7 +26,12 @@
             <th>
                 @Html.DisplayNameFor(model => model.FechaEquipo)
             </th>
-            <th></th>
+@{
+    if (User.IsInRole("Administrador"))
+    {
+            <th>Opciones</th>
+        }
+    }
         </tr>
 
         @foreach (var item in Model)
@@ -36,13 +46,22 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.FechaEquipo)
                 </td>
+@{
+    if (User.IsInRole("Administrador"))
+    {
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.EquipoID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.EquipoID }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.EquipoID })
                 </td>
+        }
+    }
             </tr>
         }
 
     </table>
 </div>
+
+<p>
+    @Html.ActionLink("Regresar a la Pagina Principal", "Index", "Home")
+</p>
